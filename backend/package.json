@@ -1,0 +1,46 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [
+    "video-conferencing",
+    "meetings",
+    "cosmomeet"
+  ],
+  "author": "CosmoMeet Team",
+  "license": "ISC",
+  "description": "Production-level backend for CosmoMeet video conferencing platform",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "joi": "^17.12.2",
+    "jsonwebtoken": "^9.0.2",
+    "mediasoup": "^3.18.0",
+    "mongodb": "^6.18.0",
+    "mongoose": "^8.17.1",
+    "nanoid": "^5.1.5",
+    "socket.io": "^4.8.1",
+    "uuid": "^11.1.0",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

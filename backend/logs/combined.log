@@ -1,0 +1,128 @@
+{"level":"info","message":"POST /api/auth/logout","timestamp":"2025-08-15 13:43:10"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 15:27:16"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 15:27:16"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 15:27:16"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 15:27:16"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 15:27:18"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 15:27:18"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-08-15 15:27:49"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 15:27:49"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 15:27:51"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 15:27:51"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 15:53:52"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 15:53:52"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 15:53:52"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 15:53:52"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 15:54:47"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 15:54:47"}
+{"level":"info","message":"POST /api/auth/logout","timestamp":"2025-08-15 15:55:01"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-08-15 15:55:08"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 15:55:08"}
+{"level":"info","message":"POST /api/meetings/","timestamp":"2025-08-15 15:57:50"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:00:43"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:00:43"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:00:43"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:00:43"}
+{"level":"info","message":"POST /api/meetings/","timestamp":"2025-08-15 16:00:47"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:00:54"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:00:54"}
+{"level":"info","message":"POST /api/meetings/","timestamp":"2025-08-15 16:00:57"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:03:07"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:03:07"}
+{"level":"info","message":"POST /api/meetings/create","timestamp":"2025-08-15 16:03:11"}
+{"level":"info","message":"POST /api/meetings/","timestamp":"2025-08-15 16:03:36"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:05:37"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:05:37"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:05:37"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:05:37"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:07:03"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:07:03"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:08:15"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:08:15"}
+{"level":"info","message":"POST /api/auth/logout","timestamp":"2025-08-15 16:09:00"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-08-15 16:09:08"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:09:08"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:10:23"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:10:23"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:10:23"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:10:23"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:11:01"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:11:01"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:21:10"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:21:10"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:21:10"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:21:10"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-08-15 16:21:23"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:21:23"}
+{"level":"info","message":"POST /api/auth/logout","timestamp":"2025-08-15 16:21:37"}
+{"level":"info","message":"POST /api/auth/register","timestamp":"2025-08-15 16:22:00"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-08-15 16:22:00"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:22:00"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:22:42"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:22:42"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:25:13"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:25:13"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:25:42"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:25:42"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:26:17"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:26:17"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:27:54"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:27:54"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:29:07"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:29:07"}
+{"level":"info","message":"POST /api/meetings/create","timestamp":"2025-08-15 16:29:11"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:29:29"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:30:56"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:35:33"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:35:33"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:35:33"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:35:33"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:35:39"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:36:44"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:40:12"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:41:31"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:42:21"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:42:49"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:43:31"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:43:31"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:43:33"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:47:24"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:47:24"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:47:24"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:47:24"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:47:47"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:47:47"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:47:49"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:48:37"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:48:37"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:48:37"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:48:37"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:48:41"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:48:41"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:48:42"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:48:42"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:48:42"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 16:48:42"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:48:44"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:49:35"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:49:35"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:49:35"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:49:35"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:50:11"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:50:14"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:50:28"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:52:16"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:53:26"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:53:26"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:53:26"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:53:26"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 16:53:45"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 16:53:45"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 16:53:45"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 16:53:45"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:53:51"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:55:15"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:55:37"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:56:12"}
+{"level":"warn","message":"Mongoose disconnected","timestamp":"2025-08-15 18:25:59"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 18:25:59"}
