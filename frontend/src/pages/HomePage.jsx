@@ -33,7 +33,7 @@ export default function Home() {
         </>
       ) : (
         <>
-          <h1>Welcome Back {user?.name || "User"}!</h1>
+          <h1 className="text-blue-400 mb-8" >Welcome Back {user?.name || "User"}!</h1>
           <p>Choose an action below:</p>
           <button onClick={() => navigate("/create-meeting")}>Create Meeting</button>
           <button onClick={() => navigate("/join-meeting")}>Join Meeting</button>

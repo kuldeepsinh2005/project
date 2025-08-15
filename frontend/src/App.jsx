@@ -8,10 +8,13 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
 import CreateMeeting from "./pages/CreateMeeting";
+import CreateMeetingPage from "./pages/createMeetingTest";
 import JoinMeeting from "./pages/JoinMeeting";
 import MeetingRoom from "./pages/MeetingRoom";
 import MeetingPage from "./pages/MeetingPage";
 import TestPage from "./pages/TestPage";
+import VideoConference from "./pages/VideoConference";
+import './App.css'; // Import your global styles
 function App() {
   return (
     <Router>
@@ -25,6 +28,8 @@ function App() {
         <Route path="/meeting/:id" element={<MeetingRoom />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/room/:meetingId" element={<MeetingPage />} />
+        <Route path="/test/createmeeting" element={<CreateMeetingPage />} />
+        <Route path="/test/video/:roomID" element={<VideoConference />} />
       </Routes>
     </Router>
   );

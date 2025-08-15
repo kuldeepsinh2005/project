@@ -126,3 +126,293 @@
 {"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 16:56:12"}
 {"level":"warn","message":"Mongoose disconnected","timestamp":"2025-08-15 18:25:59"}
 {"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 18:25:59"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 19:52:48"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 19:52:48"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 19:52:48"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 19:52:48"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:53:24"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:53:24"}
+{"level":"info","message":"POST /api/auth/logout","timestamp":"2025-08-15 19:53:28"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:53:37"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:53:37"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 19:53:45"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 19:54:37"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:54:58"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:54:58"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-08-15 19:55:10"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:55:10"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:55:19"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 19:55:19"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 19:55:24"}
+{"level":"info","message":"GET /api/meetings/YVBNVU","timestamp":"2025-08-15 20:01:04"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 20:01:20"}
+{"level":"info","message":"GET /api/meetings/MATC7R","timestamp":"2025-08-15 20:01:20"}
+{"level":"info","message":"GET /api/meetings/MATC7R","timestamp":"2025-08-15 20:01:20"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 20:04:56"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 20:04:56"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 20:04:56"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 20:04:56"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:04:58"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:04:58"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:43:21"}
+{"level":"warn","message":"Mongoose disconnected","timestamp":"2025-08-15 20:43:21"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 20:43:21"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:43:22"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 20:43:49"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:44:30"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:44:30"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 20:44:38"}
+{"level":"info","message":"GET /api/meetings/HK4PMZ","timestamp":"2025-08-15 20:44:38"}
+{"level":"info","message":"GET /api/meetings/HK4PMZ","timestamp":"2025-08-15 20:44:38"}
+{"level":"info","message":"POST /api/meetings/689f4edede3183165b4531ed/leave","timestamp":"2025-08-15 20:45:23"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 20:47:33"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 20:47:33"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 20:47:33"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 20:47:33"}
+{"level":"info","message":"DELETE /api/meetings/689f4edede3183165b4531ed","timestamp":"2025-08-15 20:47:37"}
+{"level":"info","message":"POST /api/meetings/689f4edede3183165b4531ed/leave","timestamp":"2025-08-15 20:47:40"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 20:50:42"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 20:50:42"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 20:50:42"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 20:50:42"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:53:35"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:53:36"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 20:53:40"}
+{"level":"info","message":"GET /api/meetings/9ABE02","timestamp":"2025-08-15 20:53:41"}
+{"level":"info","message":"GET /api/meetings/9ABE02","timestamp":"2025-08-15 20:53:41"}
+{"level":"info","message":"POST /api/meetings/689f50fded73e00a18f18de8/leave","timestamp":"2025-08-15 20:53:48"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 20:56:16"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 20:56:16"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 20:56:16"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 20:56:16"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:57:32"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 20:57:32"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 20:57:34"}
+{"level":"info","message":"GET /api/meetings/DN1TPN","timestamp":"2025-08-15 20:57:34"}
+{"level":"info","message":"GET /api/meetings/DN1TPN","timestamp":"2025-08-15 20:57:34"}
+{"level":"info","message":"GET /api/meetings/DN1TPN","timestamp":"2025-08-15 20:58:15"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 20:59:05"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 20:59:06"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 20:59:06"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 20:59:06"}
+{"level":"info","message":"GET /api/meetings/DN1TPN","timestamp":"2025-08-15 20:59:08"}
+{"level":"info","message":"GET /api/meetings/DN1TPN","timestamp":"2025-08-15 20:59:16"}
+{"level":"info","message":"DELETE /api/meetings/DN1TPN","timestamp":"2025-08-15 20:59:52"}
+{"level":"info","message":"POST /api/meetings/9ABE02/join","timestamp":"2025-08-15 21:04:36"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:04:54"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:04:54"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:07:01"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:07:01"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:07:06"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:07:06"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:07:39"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:07:39"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:09:12"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:09:12"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:17:34"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:17:34"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:19:50"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:19:50"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:19:55"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:19:56"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:20:55"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:20:55"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-08-15 21:21:46"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:21:47"}
+{"level":"info","message":"POST /api/meetings/9ABE02/join","timestamp":"2025-08-15 21:21:59"}
+{"level":"info","message":"GET /api/meetings/9ABE02","timestamp":"2025-08-15 21:22:05"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:22:05"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:22:05"}
+{"level":"info","message":"GET /api/meetings/9ABE02","timestamp":"2025-08-15 21:22:05"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:23:13"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:23:13"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:23:31"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:23:31"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:23:47"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:23:47"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:24:06"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:24:06"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:24:08"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:24:08"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:27:53"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:27:53"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 21:28:01"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:28:33"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:28:34"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 21:28:48"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 21:31:25"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:31:35"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:31:35"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:31:48"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:31:48"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:33:18"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:33:18"}
+{"level":"info","message":"POST /api/test/video/EMZA96","timestamp":"2025-08-15 21:33:31"}
+{"level":"info","message":"POST /api/meetings/EMZA96/join","timestamp":"2025-08-15 21:33:56"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:40:44"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:40:44"}
+{"level":"warn","message":"Mongoose disconnected","timestamp":"2025-08-15 21:40:47"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 21:40:53"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:40:57"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:40:57"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:42:39"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:44:02"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:45:08"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 21:45:56"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 21:45:56"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 21:45:56"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 21:45:56"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:45:58"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:45:58"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 21:47:16"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 21:47:16"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 21:47:16"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 21:47:16"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 21:47:26"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 21:47:26"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 21:47:26"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 21:47:26"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:47:27"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 21:47:50"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 21:47:50"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 21:47:50"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 21:47:50"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:47:51"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:47:52"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:47:54"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:48:43"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:49:31"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 21:50:40"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 21:50:40"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 21:50:40"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 21:50:40"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 21:50:45"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 21:50:45"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 21:50:45"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 21:50:45"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:50:46"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:50:46"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 21:51:08"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 21:51:08"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 21:51:08"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 21:51:08"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:51:21"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:51:49"}
+{"level":"info","message":"GET /api/meetings/AWS24Z","timestamp":"2025-08-15 21:51:49"}
+{"level":"info","message":"GET /api/meetings/AWS24Z","timestamp":"2025-08-15 21:51:49"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:52:56"}
+{"level":"info","message":"POST /api/meetings/AWS24Z/join","timestamp":"2025-08-15 21:55:44"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:56:32"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:56:32"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:56:41"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:56:41"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:59:26"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:59:26"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:59:32"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:59:32"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:59:33"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:59:33"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:59:39"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 21:59:39"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 22:05:58"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-15 22:05:58"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-08-15 22:05:58"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-15 22:05:58"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-08-15 22:14:15"}
+{"level":"info","message":"POST /api/meeting/EMZA96","timestamp":"2025-08-15 22:14:44"}
+{"level":"info","message":"GET /api/meeting/EMZA96","timestamp":"2025-08-15 22:14:47"}
+{"level":"info","message":"GET /api/meetings/EMZA96","timestamp":"2025-08-15 22:15:04"}
+{"level":"info","message":"POST /api/meetings/EMZA96/join","timestamp":"2025-08-15 22:15:21"}
+{"level":"info","message":"POST /api/meetings/EMZA96/join","timestamp":"2025-08-15 22:15:21"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:15:55"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:15:55"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:18:24"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:18:24"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:19:24"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:19:24"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:29:16"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:29:16"}
+{"level":"warn","message":"Mongoose disconnected","timestamp":"2025-08-15 22:29:16"}
+{"level":"info","message":"Mongoose connected","timestamp":"2025-08-15 22:29:16"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:29:17"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:29:17"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:30:00"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:30:00"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:30:09"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:30:09"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:31:24"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:31:24"}
+{"level":"info","message":"GET /api/meetings/EMZA96","timestamp":"2025-08-15 22:31:41"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:33:04"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:33:04"}
+{"level":"info","message":"GET /api/meetings/EMZA96","timestamp":"2025-08-15 22:33:04"}
+{"level":"info","message":"GET /api/meetings/EMZA96","timestamp":"2025-08-15 22:33:04"}
+{"level":"info","message":"POST /api/meetings/EMZA96/leave","timestamp":"2025-08-15 22:33:31"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:33:31"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:33:31"}
+{"level":"info","message":"POST /api/meetings/5LBJ96/join","timestamp":"2025-08-15 22:34:27"}
+{"level":"info","message":"GET /api/meetings/5LBJ96","timestamp":"2025-08-15 22:34:27"}
+{"level":"info","message":"GET /api/meetings/5LBJ96","timestamp":"2025-08-15 22:34:27"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:37:33"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:37:33"}
+{"level":"info","message":"GET /api/meetings/5LBJ96","timestamp":"2025-08-15 22:37:43"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:37:52"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:37:52"}
+{"level":"info","message":"GET /api/meetings/5LBJ96","timestamp":"2025-08-15 22:37:52"}
+{"level":"info","message":"GET /api/meetings/5LBJ96","timestamp":"2025-08-15 22:37:52"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:38:13"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:38:13"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 22:38:36"}
+{"level":"info","message":"GET /api/meetings/3GKXU8","timestamp":"2025-08-15 22:38:36"}
+{"level":"info","message":"GET /api/meetings/3GKXU8","timestamp":"2025-08-15 22:38:36"}
+{"level":"info","message":"POST /api/meetings/3GKXU8/join","timestamp":"2025-08-15 22:39:10"}
+{"level":"info","message":"GET /api/meetings/3GKXU8","timestamp":"2025-08-15 22:39:10"}
+{"level":"info","message":"GET /api/meetings/3GKXU8","timestamp":"2025-08-15 22:39:10"}
+{"level":"info","message":"POST /api/meetings/3GKXU8/leave","timestamp":"2025-08-15 22:39:49"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:39:50"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:39:50"}
+{"level":"info","message":"DELETE /api/meetings/3GKXU8","timestamp":"2025-08-15 22:40:39"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:40:39"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:40:39"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:42:59"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:42:59"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:43:02"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:43:02"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:43:08"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:43:08"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:45:43"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:45:43"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:47:06"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:47:06"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:48:27"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:48:27"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:48:34"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:48:34"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:59:08"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:59:08"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:59:43"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 22:59:43"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:00:36"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:00:36"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:00:56"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:00:57"}
+{"level":"info","message":"POST /api/meetings","timestamp":"2025-08-15 23:01:32"}
+{"level":"info","message":"GET /api/meetings/JN77PE","timestamp":"2025-08-15 23:01:32"}
+{"level":"info","message":"GET /api/meetings/JN77PE","timestamp":"2025-08-15 23:01:32"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:01:51"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:01:51"}
+{"level":"info","message":"POST /api/meetings/JN77PE/join","timestamp":"2025-08-15 23:02:16"}
+{"level":"info","message":"GET /api/meetings/JN77PE","timestamp":"2025-08-15 23:02:17"}
+{"level":"info","message":"GET /api/meetings/JN77PE","timestamp":"2025-08-15 23:02:17"}
+{"level":"info","message":"POST /api/meetings/JN77PE/leave","timestamp":"2025-08-15 23:03:36"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:03:36"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:03:37"}
+{"level":"info","message":"POST /api/meetings/JN77PE/join","timestamp":"2025-08-15 23:04:13"}
+{"level":"info","message":"GET /api/meetings/JN77PE","timestamp":"2025-08-15 23:04:14"}
+{"level":"info","message":"GET /api/meetings/JN77PE","timestamp":"2025-08-15 23:04:14"}
+{"level":"info","message":"DELETE /api/meetings/JN77PE","timestamp":"2025-08-15 23:04:31"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:04:31"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:04:31"}
+{"level":"info","message":"POST /api/meetings/JN77PE/leave","timestamp":"2025-08-15 23:05:09"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:05:10"}
+{"level":"info","message":"GET /api/auth/me","timestamp":"2025-08-15 23:05:10"}

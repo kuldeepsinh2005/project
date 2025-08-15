@@ -5,9 +5,9 @@ export default function MeetingPage() {
   const { meetingId } = useParams();
   
   const myMeeting = async (element) => {
-    const appId = 293412303;
-    const serverSecret = "5ab0771a57b7fabc881860669da2265e";
-    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appId, serverSecret, meetingId, Date.now().toString(), "CosmoMeet User");
+  const appIDString = import.meta.env.VITE_ZEGO_APP_ID;
+    const serverSecret = import.meta.env.VITE_ZEGO_SERVER_SECRET;
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appIDString, serverSecret, meetingId, Date.now().toString(), "CosmoMeet User");
   
     const zp = ZegoUIKitPrebuilt.create(kitToken);
     zp.joinRoom({
@@ -15,7 +15,7 @@ export default function MeetingPage() {
       sharedLinks: [
         {
           name: 'Copy Link',
-          url: `http://localhost:5173/meeting/${meetingId}`,
+          url: `http://localhost:5173/test/video/${meetingId}`,
         },
       ],
       scenario: {

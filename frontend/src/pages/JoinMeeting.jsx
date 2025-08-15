@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Navigate } from "react-router-dom";
-
+import axios from 'axios';
 export default function JoinMeeting() {
   const { isAuthenticated, loading } = useAuth();
   const [code, setCode] = useState("");
@@ -15,15 +15,16 @@ export default function JoinMeeting() {
     e.preventDefault();
     setError("");
     try {
-      const res = await fetch("/api/meetings/join", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ code: code.trim().toUpperCase() }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to join meeting");
-      navigate(`/meeting/${data.meeting._id}`);
+      const res = await axios.post(
+        `http://localhost:5000/api/meetings/${code}/join`,
+        {}, // Request body
+        { withCredentials: true } // Config object
+      );
+
+      console.log("Join response:", res);
+      // const data = await res.json();
+      // if (!res.ok) throw new Error(data.error || "Failed to join meeting");
+      navigate(`/test/video/${res.data.meeting.code}`);
     } catch (err) {
       setError(err.message);
     }
