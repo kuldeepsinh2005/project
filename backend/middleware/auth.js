@@ -12,7 +12,7 @@ export const verifyJWT = asyncHandler(async(req, _, next) => {
         // console.log(token);
         if (!token) {
             console.log("No token found1");
-            throw new ErrorResponse(401, "Unauthorized request")
+             next(new ErrorResponse(401, "Unauthorized request"));
         }
     
         const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
@@ -21,7 +21,7 @@ export const verifyJWT = asyncHandler(async(req, _, next) => {
     
         if (!user) {
             console.log("No token found");
-            throw new ErrorResponse(401, "Invalid Access Token")
+            next(new ErrorResponse(401, "Invalid Access Token"));
         }
     
         req.user = user;

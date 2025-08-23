@@ -7,14 +7,15 @@ import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
-import CreateMeeting from "./pages/CreateMeeting";
-import CreateMeetingPage from "./pages/createMeetingTest";
+// import CreateMeeting from "./pages/CreateMeeting";
+import CreateMeetingPage from "./pages/CreateMeetingTest";
 import JoinMeeting from "./pages/JoinMeeting";
 import MeetingRoom from "./pages/MeetingRoom";
 import MeetingPage from "./pages/MeetingPage";
 import TestPage from "./pages/TestPage";
 import VideoConference from "./pages/VideoConference";
 import './App.css'; // Import your global styles
+import Footer from "./components/Footer";
 function App() {
   return (
     <Router>
@@ -23,7 +24,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/create-meeting" element={<CreateMeeting />} />
+        {/* <Route path="/create-meeting" element={<CreateMeeting />} /> */}
         <Route path="/join-meeting" element={<JoinMeeting />} />
         <Route path="/meeting/:id" element={<MeetingRoom />} />
         <Route path="/test" element={<TestPage />} />
@@ -31,6 +32,7 @@ function App() {
         <Route path="/test/createmeeting" element={<CreateMeetingPage />} />
         <Route path="/test/video/:roomID" element={<VideoConference />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }
