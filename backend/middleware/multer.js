@@ -8,18 +8,22 @@ if (!fs.existsSync(tempDir)) {
     fs.mkdirSync(tempDir);
 }
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, tempDir);
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    }
-});
+const storage = multer.memoryStorage();
 
-const upload = multer({ 
-    storage,
-    limits: { fileSize: 1024 * 1024 * 500 } // 500MB limit
+// Create the multer instance with the memory storage configuration
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 500 // 500MB limit - adjust as needed
+  },
+  fileFilter: (req, file, cb) => {
+    // We can add validation here if needed, for example, to only allow specific video types
+    if (file.mimetype.startsWith('video/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only video files are allowed.'), false);
+    }
+  }
 });
 
 module.exports = { upload };

@@ -40,6 +40,7 @@ export default function Header() {
             <a href="/" className="hover:text-[#0ea5e9] transition">Home</a>
             <a href="/test/createmeeting" className="hover:text-[#0ea5e9] transition">New Meeting</a>
             <a href="/my-meetings" className="hover:text-[#0ea5e9] transition">My Meetings</a>
+            <a href="/my-recordings" className="hover:text-[#0ea5e9] transition">My Recordings</a>
             <a href="#" className="hover:text-[#0ea5e9] transition">Support</a>
         </div>
 

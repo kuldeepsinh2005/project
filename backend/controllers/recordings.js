@@ -32,7 +32,11 @@ exports.uploadRecording = async (req, res, next) => {
 
     // Upload to Cloudinary
     const uploadStream = cloudinary.uploader.upload_stream(
-      { resource_type: 'video' },
+      { 
+        resource_type: 'video',
+        // --- CHANGE: Added folder option ---
+        folder: 'cosmo-meet' 
+      },
       async (error, result) => {
         if (error) {
           console.error('Cloudinary Upload Error:', error);
@@ -62,75 +66,16 @@ exports.uploadRecording = async (req, res, next) => {
   }
 };
 
+exports.getUserRecordings = async (req, res, next) => {
+  try {
+    // console.log(req.user._id);
+    const recordings = await Recording.find({ recordedBy: req.user._id })
+      .populate('meeting', 'title code') // Populate related meeting info
+      .sort({ createdAt: -1 }); // Show newest first
 
+    res.status(200).json({ success: true, count: recordings.length, data: recordings });
+  } catch (err) {
+    next(err);
+  }
+};
 
-// const Recording = require('../models/Recording');
-// const Meeting = require('../models/Meeting');
-// const { uploadOnCloudinary } = require('../config/cloudinary');
-// const ErrorResponse = require('../utils/errorResponse');
-
-// // @desc    Upload a meeting recording
-// // @route   POST /api/recordings/:meetingCode/upload
-// // @access  Private (Host only)
-// exports.uploadRecording = async (req, res, next) => {
-//     try {
-//         const { meetingCode } = req.params;
-//         const meeting = await Meeting.findOne({ code: meetingCode });
-
-//         if (!meeting) {
-//             return next(new ErrorResponse('Meeting not found', 404));
-//         }
-
-//         // Security check: Only the host can upload recordings
-//         if (meeting.host.toString() !== req.user._id.toString()) {
-//             return next(new ErrorResponse('Only the host can upload recordings', 403));
-//         }
-
-//         const localFilePath = req.file?.path;
-//         if (!localFilePath) {
-//             return next(new ErrorResponse('No recording file received', 400));
-//         }
-
-//         const cloudinaryResponse = await uploadOnCloudinary(localFilePath);
-
-//         if (!cloudinaryResponse) {
-//             return next(new ErrorResponse('Failed to upload recording to cloud', 500));
-//         }
-
-//         const recording = await Recording.create({
-//             meeting: meeting._id,
-//             recordedBy: req.user._id,
-//             cloudinaryUrl: cloudinaryResponse.secure_url,
-//             cloudinaryPublicId: cloudinaryResponse.public_id,
-//             duration: cloudinaryResponse.duration,
-//             fileSize: cloudinaryResponse.bytes,
-//         });
-
-//         res.status(201).json({ success: true, data: recording });
-
-//     } catch (err) {
-//         next(err);
-//     }
-// };
-
-// // @desc    Get all recordings for a meeting
-// // @route   GET /api/recordings/:meetingCode
-// // @access  Private
-// exports.getRecordingsForMeeting = async (req, res, next) => {
-//     try {
-//         const { meetingCode } = req.params;
-//         const meeting = await Meeting.findOne({ code: meetingCode });
-
-//         if (!meeting) {
-//             return next(new ErrorResponse('Meeting not found', 404));
-//         }
-
-//         const recordings = await Recording.find({ meeting: meeting._id })
-//             .sort({ createdAt: -1 });
-
-//         res.status(200).json({ success: true, count: recordings.length, data: recordings });
-
-//     } catch (err) {
-//         next(err);
-//     }
-// };

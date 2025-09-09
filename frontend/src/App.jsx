@@ -17,6 +17,7 @@ import VideoConference from "./pages/VideoConference";
 import MyMeetingsPage from "./pages/MyMeetingsPage";
 import './App.css'; // Import your global styles
 import Footer from "./components/Footer";
+import MyRecordingsPage from "./pages/MyRecordingsPage";
 function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/my-meetings" element={<MyMeetingsPage />} />
         {/* <Route path="/create-meeting" element={<CreateMeeting />} /> */}
+        <Route path="/my-recordings" element={<MyRecordingsPage />} />
         <Route path="/join-meeting" element={<JoinMeeting />} />
         <Route path="/meeting/:id" element={<MeetingRoom />} />
         <Route path="/test" element={<TestPage />} />
