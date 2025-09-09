@@ -9,7 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
 // import CreateMeeting from "./pages/CreateMeeting";
 import CreateMeetingPage from "./pages/CreateMeetingTest";
-import JoinMeeting from "./pages/JoinMeeting";
+// import JoinMeeting from "./pages/JoinMeeting";
 // import MeetingRoom from "./pages/MeetingRoom";
 // import MeetingPage from "./pages/InVision_MeetingPage";
 import TestPage from "./pages/TestPage";
@@ -29,7 +29,7 @@ function App() {
         <Route path="/my-meetings" element={<MyMeetingsPage />} />
         {/* <Route path="/create-meeting" element={<CreateMeeting />} /> */}
         <Route path="/my-recordings" element={<MyRecordingsPage />} />
-        <Route path="/join-meeting" element={<JoinMeeting />} />
+        {/* <Route path="/join-meeting" element={<JoinMeeting />} /> */}
         {/* <Route path="/meeting/:id" element={<MeetingRoom />} /> */}
         <Route path="/test" element={<TestPage />} />
         {/* <Route path="/room/:meetingId" element={<MeetingPage />} /> */}
