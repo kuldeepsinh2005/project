@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const http = require('http');
 const { Server: SocketIO } = require('socket.io');
 const logger = require('./utils/logger');
-
+const recordingRoutes = require('./routes/recordings'); 
 // --- 1. Initialize Express & HTTP Server ---
 const app = express();
 const server = http.createServer(app);
@@ -26,6 +26,7 @@ app.use((req, res, next) => {
   logger.info(`${req.method} ${req.path}`);
   next();
 });
+
 
 // --- 3. Database Connection ---
 const connectDB = async () => {
@@ -46,50 +47,51 @@ mongoose.connection.on('disconnected', () => logger.warn('Mongoose disconnected'
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/meetings', require('./routes/meetings'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/recordings', recordingRoutes);
 
 // --- 5. Socket.IO Setup ---
 
-const io = new SocketIO(server, {
-  cors: {
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-    methods: ['GET', 'POST'],
-    credentials: true
-  },
-  pingTimeout: 60000
-});
+// const io = new SocketIO(server, {
+//   cors: {
+//     origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+//     methods: ['GET', 'POST'],
+//     credentials: true
+//   },
+//   pingTimeout: 60000
+// });
 
-// initialize mediasoup worker(s) at startup
-const mediasoupService = require('./services/mediasoupService');
-(async () => {
-  await mediasoupService.createWorker();
-})();
+// // initialize mediasoup worker(s) at startup
+// const mediasoupService = require('./services/mediasoupService');
+// (async () => {
+//   await mediasoupService.createWorker();
+// })();
 
-// attach the mediasoup socket handlers
-const initSocketMediasoup = require('./socketMediasoup');
-initSocketMediasoup(io);
+// // attach the mediasoup socket handlers
+// const initSocketMediasoup = require('./socketMediasoup');
+// initSocketMediasoup(io);
 
-io.on('connection', (socket) => {
-  socket.on('join-room', ({ meetingId, username }) => {
-    socket.join(meetingId);
-    socket.to(meetingId).emit('user-joined', { socketId: socket.id, username });
-  });
+// io.on('connection', (socket) => {
+//   socket.on('join-room', ({ meetingId, username }) => {
+//     socket.join(meetingId);
+//     socket.to(meetingId).emit('user-joined', { socketId: socket.id, username });
+//   });
 
-  socket.on('offer', ({ to, sdp }) => {
-    io.to(to).emit('offer', { from: socket.id, sdp });
-  });
+//   socket.on('offer', ({ to, sdp }) => {
+//     io.to(to).emit('offer', { from: socket.id, sdp });
+//   });
 
-  socket.on('answer', ({ to, sdp }) => {
-    io.to(to).emit('answer', { from: socket.id, sdp });
-  });
+//   socket.on('answer', ({ to, sdp }) => {
+//     io.to(to).emit('answer', { from: socket.id, sdp });
+//   });
 
-  socket.on('ice-candidate', ({ to, candidate }) => {
-    io.to(to).emit('ice-candidate', { from: socket.id, candidate });
-  });
+//   socket.on('ice-candidate', ({ to, candidate }) => {
+//     io.to(to).emit('ice-candidate', { from: socket.id, candidate });
+//   });
 
-  socket.on('disconnect', () => {
-    io.emit('user-disconnected', socket.id);
-  });
-});
+//   socket.on('disconnect', () => {
+//     io.emit('user-disconnected', socket.id);
+//   });
+// });
 
 
 // const io = new SocketIO(server, {

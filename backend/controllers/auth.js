@@ -144,7 +144,7 @@ exports.logoutUser = async (req, res, next) => {
 exports.getCurrentUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id).select('-password -refreshToken');
-    console.log("Current user:", user);
+    // console.log("Current user:", user);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }

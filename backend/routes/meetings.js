@@ -10,8 +10,11 @@ const {
   leaveMeeting,
   removeParticipant,
   endMeeting,
-  getMeetingDetails
+  getMeetingDetails,
+  getUserMeetings
 } = require('../controllers/meetings.js');
+
+router.get('/my-meetings', verifyJWT, asyncHandler(getUserMeetings));
 
 // @route   POST /api/meetings
 // @desc    Create a new meeting (host only)
@@ -42,6 +45,8 @@ router.delete('/:id', verifyJWT, asyncHandler(endMeeting));
 // @desc    Get meeting details
 // @access  Private
 router.get('/:id', verifyJWT, asyncHandler(getMeetingDetails));
+
+
 
 module.exports = router;
 

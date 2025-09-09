@@ -39,7 +39,7 @@ export default function Header() {
         <div className="hidden md:flex space-x-6 text-white">
             <a href="/" className="hover:text-[#0ea5e9] transition">Home</a>
             <a href="/test/createmeeting" className="hover:text-[#0ea5e9] transition">New Meeting</a>
-            <a href="join-meeting" className="hover:text-[#0ea5e9] transition">Join</a>
+            <a href="/my-meetings" className="hover:text-[#0ea5e9] transition">My Meetings</a>
             <a href="#" className="hover:text-[#0ea5e9] transition">Support</a>
         </div>
 

@@ -19,6 +19,7 @@
   "description": "Production-level backend for CosmoMeet video conferencing platform",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.7.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -30,6 +31,7 @@
     "mediasoup": "^3.18.0",
     "mongodb": "^6.18.0",
     "mongoose": "^8.17.1",
+    "multer": "^2.0.2",
     "nanoid": "^5.1.5",
     "socket.io": "^4.8.1",
     "uuid": "^11.1.0",
