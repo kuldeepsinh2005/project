@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 // --- Reusable Icon Components ---
@@ -36,13 +36,16 @@ export default function Header() {
         </div>
 
         {/* Navigation Links - Text color changed to white */}
+        {/* <div className="hidden md:flex space-x-6 text-white"> */}
         <div className="hidden md:flex space-x-6 text-white">
-            <a href="/" className="hover:text-[#0ea5e9] transition">Home</a>
-            <a href="/test/createmeeting" className="hover:text-[#0ea5e9] transition">New Meeting</a>
-            <a href="/my-meetings" className="hover:text-[#0ea5e9] transition">My Meetings</a>
-            <a href="/my-recordings" className="hover:text-[#0ea5e9] transition">My Recordings</a>
-            <a href="#" className="hover:text-[#0ea5e9] transition">Support</a>
+          <Link to="/" className="hover:text-[#0ea5e9] transition">Home</Link>
+          <Link to="/test/createmeeting" className="hover:text-[#0ea5e9] transition">New Meeting</Link>
+          <Link to="/my-meetings" className="hover:text-[#0ea5e9] transition">My Meetings</Link>
+          <Link to="/my-recordings" className="hover:text-[#0ea5e9] transition">My Recordings</Link>
+          <a href="#" className="hover:text-[#0ea5e9] transition">Support</a> {/* external or # can stay */}
         </div>
+
+        {/* </div> */}
 
         {/* Authentication Buttons */}
         <div className="flex items-center space-x-4">

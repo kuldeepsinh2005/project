@@ -72,32 +72,48 @@ const MeetingDetailModal = ({ meeting, onClose, user }) => {
 
 
 export default function MyMeetingsPage() {
+  console.log("1");
   const { user, isAuthenticated, loading: authLoading } = useAuth();
+  
+  // useEffect(() => {
+  //   console.log("👀 user", user);
+  //   console.log("✅ isAuthenticated", isAuthenticated);
+  //   console.log("⌛ authLoading", authLoading);
+  // }, [user, isAuthenticated, authLoading]);
   const navigate = useNavigate();
   const [meetings, setMeetings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selectedMeeting, setSelectedMeeting] = useState(null);
 
-  useEffect(() => {
-    const fetchMeetings = async () => {
-      if (!isAuthenticated) return;
-      try {
-        const res = await axios.get('http://localhost:5000/api/meetings/my-meetings', { withCredentials: true });
-        if (res.data.success) {
-          setMeetings(res.data.data);
-        }
-      } catch (err) {
-        setError('Failed to fetch meeting history.');
-      } finally {
-        setLoading(false);
-      }
-    };
+  // const { user, isAuthenticated, loading: authLoading } = useAuth();
 
-    if (!authLoading) {
-      fetchMeetings();
+  
+
+
+  useEffect(() => {
+  const fetchMeetings = async () => {
+    try {
+      const res = await axios.get(
+        'http://localhost:5000/api/meetings/my-meetings',
+        { withCredentials: true }
+      );
+      if (res.data.success) {
+        setMeetings(res.data.data);
+      }
+    } catch (err) {
+      setError('Failed to fetch meeting history.');
+    } finally {
+      setLoading(false);
     }
-  }, [isAuthenticated, authLoading]);
+  };
+
+  if (!authLoading && isAuthenticated) {
+    console.log("✅ Fetching meetings");
+    fetchMeetings();
+  }
+}, [isAuthenticated, authLoading]);
+
 
   if (authLoading) {
     return <div className="bg-[#0a0e17] min-h-screen flex items-center justify-center text-white">Loading...</div>;
