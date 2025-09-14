@@ -2,19 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import axios from 'axios';
-// import Header from '../components/Header.jsx';
-// import Footer from '../components/Footer.jsx';
 import Starfield from '../components/Starfield.jsx';
 
 const Icon = ({ id, className }) => <i className={`fas fa-${id} ${className}`}></i>;
 
-// --- Meeting Detail Modal (Updated) ---
+// --- Meeting Detail Modal (No changes) ---
 const MeetingDetailModal = ({ meeting, onClose, user }) => {
     if (!meeting) return null;
-
-    // No longer filtering for active participants
     const allParticipants = meeting.participants;
-
     return (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
             <div className="bg-[#1a2138] border border-[#6366f1]/20 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
@@ -38,7 +33,7 @@ const MeetingDetailModal = ({ meeting, onClose, user }) => {
                             <p className="text-sm text-[#e2e8f0]/70">Date Created</p>
                             <p className="text-white">{new Date(meeting.createdAt).toLocaleString()}</p>
                         </div>
-                         <div>
+                        <div>
                             <p className="text-sm text-[#e2e8f0]/70">Host</p>
                             <p className="text-white">{meeting.host.username}</p>
                         </div>
@@ -72,48 +67,34 @@ const MeetingDetailModal = ({ meeting, onClose, user }) => {
 
 
 export default function MyMeetingsPage() {
-  console.log("1");
   const { user, isAuthenticated, loading: authLoading } = useAuth();
-  
-  // useEffect(() => {
-  //   console.log("👀 user", user);
-  //   console.log("✅ isAuthenticated", isAuthenticated);
-  //   console.log("⌛ authLoading", authLoading);
-  // }, [user, isAuthenticated, authLoading]);
   const navigate = useNavigate();
   const [meetings, setMeetings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selectedMeeting, setSelectedMeeting] = useState(null);
 
-  // const { user, isAuthenticated, loading: authLoading } = useAuth();
-
-  
-
-
   useEffect(() => {
-  const fetchMeetings = async () => {
-    try {
-      const res = await axios.get(
-        'http://localhost:5000/api/meetings/my-meetings',
-        { withCredentials: true }
-      );
-      if (res.data.success) {
-        setMeetings(res.data.data);
+    const fetchMeetings = async () => {
+      try {
+        const res = await axios.get(
+          'http://localhost:5000/api/meetings/my-meetings',
+          { withCredentials: true }
+        );
+        if (res.data.success) {
+          setMeetings(res.data.data);
+        }
+      } catch (err) {
+        setError('Failed to fetch meeting history.');
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      setError('Failed to fetch meeting history.');
-    } finally {
-      setLoading(false);
+    };
+
+    if (!authLoading && isAuthenticated) {
+      fetchMeetings();
     }
-  };
-
-  if (!authLoading && isAuthenticated) {
-    console.log("✅ Fetching meetings");
-    fetchMeetings();
-  }
-}, [isAuthenticated, authLoading]);
-
+  }, [isAuthenticated, authLoading]);
 
   if (authLoading) {
     return <div className="bg-[#0a0e17] min-h-screen flex items-center justify-center text-white">Loading...</div>;
@@ -138,37 +119,37 @@ export default function MyMeetingsPage() {
           ) : error ? (
             <p className="text-red-400">{error}</p>
           ) : meetings.length === 0 ? (
-             <div className="text-center bg-[#1a2138]/60 p-8 rounded-2xl">
+            <div className="text-center bg-[#1a2138]/60 p-8 rounded-2xl">
               <Icon id="history" className="text-4xl text-[#6366f1] mb-4" />
               <h2 className="text-2xl font-bold">No Meetings Yet</h2>
               <p className="text-[#e2e8f0]/70 mt-2">You haven't hosted or joined any meetings. <br/> Start by creating one from your dashboard!</p>
-              <button onClick={() => navigate('/')} className="mt-6 px-6 py-2 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] rounded-lg text-white font-semibold">Go to Dashboard</button>
+              <button onClick={() => navigate('/dashboard')} className="mt-6 px-6 py-2 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] rounded-lg text-white font-semibold">Go to Dashboard</button>
             </div>
           ) : (
             <div className="space-y-10">
-                {/* Hosted Meetings Section */}
-                <div>
-                    <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#8b5cf6] pb-2">Hosted by You</h2>
-                    {hostedMeetings.length > 0 ? (
-                        <div className="space-y-4">
-                            {hostedMeetings.map((meeting) => (
-                                <MeetingRow key={meeting._id} meeting={meeting} onSelect={setSelectedMeeting} />
-                            ))}
-                        </div>
-                    ) : <p className="text-[#e2e8f0]/70">You have not hosted any meetings.</p>}
-                </div>
+              {/* Hosted Meetings Section */}
+              <div>
+                <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#8b5cf6] pb-2">Hosted by You</h2>
+                {hostedMeetings.length > 0 ? (
+                    <div className="space-y-4">
+                        {hostedMeetings.map((meeting) => (
+                            <MeetingRow key={meeting._id} meeting={meeting} onSelect={setSelectedMeeting} />
+                        ))}
+                    </div>
+                ) : <p className="text-[#e2e8f0]/70">You have not hosted any meetings.</p>}
+              </div>
 
-                {/* Participated Meetings Section */}
-                <div>
-                    <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#0ea5e9] pb-2">Participated In</h2>
-                     {participatedMeetings.length > 0 ? (
-                        <div className="space-y-4">
-                            {participatedMeetings.map((meeting) => (
-                                <MeetingRow key={meeting._id} meeting={meeting} onSelect={setSelectedMeeting} />
-                            ))}
-                        </div>
-                    ) : <p className="text-[#e2e8f0]/70">You have not participated in any meetings.</p>}
-                </div>
+              {/* Participated Meetings Section */}
+              <div>
+                <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#0ea5e9] pb-2">Participated In</h2>
+                {participatedMeetings.length > 0 ? (
+                    <div className="space-y-4">
+                        {participatedMeetings.map((meeting) => (
+                            <MeetingRow key={meeting._id} meeting={meeting} onSelect={setSelectedMeeting} />
+                        ))}
+                    </div>
+                ) : <p className="text-[#e2e8f0]/70">You have not participated in any meetings.</p>}
+              </div>
             </div>
           )}
         </div>
@@ -179,9 +160,25 @@ export default function MyMeetingsPage() {
   );
 }
 
-// --- Reusable Meeting Row Component ---
+// --- Reusable Meeting Row Component (Updated with Rejoin Logic) ---
 const MeetingRow = ({ meeting, onSelect }) => {
     const navigate = useNavigate();
+    const [isRejoining, setIsRejoining] = useState(false);
+
+    const handleRejoin = async () => {
+        setIsRejoining(true);
+        try {
+            // The backend's join logic gracefully handles rejoining.
+            await axios.post(`http://localhost:5000/api/meetings/${meeting.code}/join`, {}, { withCredentials: true });
+            navigate(`/test/video/${meeting.code}`);
+        } catch (err) {
+            console.error("Failed to rejoin meeting:", err);
+            alert("Could not rejoin the meeting. It may have ended or an error occurred.");
+        } finally {
+            setIsRejoining(false);
+        }
+    };
+
     return (
         <div className="bg-[#1a2138]/80 backdrop-blur-md border border-[#6366f1]/20 p-4 rounded-xl flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex-1 cursor-pointer" onClick={() => onSelect(meeting)}>
@@ -194,13 +191,14 @@ const MeetingRow = ({ meeting, onSelect }) => {
                 <p className={`text-xs font-bold uppercase ${meeting.status === 'live' ? 'text-green-400' : 'text-red-400'}`}>{meeting.status}</p>
             </div>
             <button 
-                onClick={() => {}} 
-                disabled={meeting.status === 'ended'}
+                onClick={handleRejoin} 
+                disabled={meeting.status === 'ended' || isRejoining}
                 className="px-6 py-2 rounded-lg bg-[#0ea5e9] hover:bg-[#0ea5e9]/90 disabled:bg-gray-500 disabled:cursor-not-allowed text-white font-semibold transition"
             >
-                {meeting.status === 'ended' ? 'Ended' : 'Rejoin'}
+                {isRejoining ? 'Rejoining...' : (meeting.status === 'ended' ? 'Ended' : 'Rejoin')}
             </button>
         </div>
     );
 };
+
 

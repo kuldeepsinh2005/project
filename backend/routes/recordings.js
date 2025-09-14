@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { verifyJWT } = require('../middleware/auth');
 const { upload } = require('../middleware/multer');
-const { uploadRecording, getUserRecordings } = require('../controllers/recordings');
+const { uploadRecording, getUserRecordings,deleteRecording } = require('../controllers/recordings');
 const { asyncHandler } = require('../utils/asyncHandler');
 
 // POST /api/recordings/:meetingCode/upload
@@ -18,6 +18,11 @@ router.get(
     '',
     verifyJWT,
     asyncHandler(getUserRecordings)
+);
+router.delete(
+    '/:meetingCode',
+    verifyJWT,
+    asyncHandler(deleteRecording)
 );
 
 module.exports = router;

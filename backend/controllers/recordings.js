@@ -79,3 +79,33 @@ exports.getUserRecordings = async (req, res, next) => {
   }
 };
 
+// --- NEW FUNCTION ---
+// @desc    Delete a recording
+// @route   DELETE /api/recordings/:meetingCode
+// @access  Private
+exports.deleteRecording = async (req, res, next) => {
+  try {
+    const recording = await Recording.findById(req.params.meetingCode);
+    // console.log(req.params.meetingCode," ",recording);
+    if (!recording) {
+      return res.status(404).json({ success: false, error: 'Recording not found' });
+    }
+
+    // Ensure the user deleting the recording is the one who created it
+    if (recording.recordedBy.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ success: false, error: 'You are not authorized to delete this recording.' });
+    }
+
+    // Step 1: Delete the video file from Cloudinary
+    await cloudinary.uploader.destroy(recording.cloudinaryPublicId, { resource_type: 'video' });
+
+    // Step 2: Delete the recording metadata from the database
+    await recording.deleteOne();
+
+    res.status(200).json({ success: true, data: {} });
+  } catch (err) {
+    next(err);
+  }
+};
+
+

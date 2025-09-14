@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom'; // Import Navigate
 import axios from 'axios';
 import Starfield from '../components/Starfield.jsx';
-
+import { useAuth } from '../context/AuthContext.jsx'; // Import useAuth
 
 // --- Reusable Icon Component ---
 const Icon = ({ id, className }) => <i className={`fas fa-${id} ${className}`}></i>;
@@ -12,6 +12,9 @@ export default function CreateMeetingPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  // --- NEW: Authentication Check ---
+  const { isAuthenticated, loading: authLoading } = useAuth();
 
   const handleCreateMeeting = async (e) => {
     e.preventDefault();
@@ -46,6 +49,15 @@ export default function CreateMeetingPage() {
       setLoading(false);
     }
   };
+
+  // --- NEW: Render loading state and redirect if not authenticated ---
+  if (authLoading) {
+    return <div className="bg-[#0a0e17] min-h-screen flex items-center justify-center text-white">Loading...</div>;
+  }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  // --- END of NEW logic ---
 
   return (
     <div className="bg-[#0a0e17] text-[#e2e8f0] font-['Exo_2'] min-h-screen flex flex-col">

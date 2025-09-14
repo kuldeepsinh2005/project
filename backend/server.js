@@ -60,25 +60,25 @@ const startServer = async () => {
     });
   } catch (err) {
     logger.error('Server startup error:', err);
-    process.exit(1);
+    // process.exit(1);
   }
 };
 
 // --- 7. Graceful Shutdown ---
 process.on('unhandledRejection', (err) => {
   logger.error('Unhandled Rejection:', err);
-  server.close(() => process.exit(1));
+  // server.close(() => process.exit(1));
 });
 process.on('uncaughtException', (err) => {
   logger.error('Uncaught Exception:', err);
-  server.close(() => process.exit(1));
+  // server.close(() => process.exit(1));
 });
 process.on('SIGTERM', () => {
   logger.info('SIGTERM received. Closing...');
   server.close(() => {
     mongoose.connection.close(false, () => {
       logger.info('MongoDB connection closed');
-      process.exit(0);
+      // process.exit(0);
     });
   });
 });
