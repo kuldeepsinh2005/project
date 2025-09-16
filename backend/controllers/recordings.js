@@ -1,6 +1,22 @@
 const Recording = require('../models/Recording');
 const Meeting = require('../models/Meeting');
 const cloudinary = require('cloudinary').v2;
+const { transcribeWithWhisper } = require('../utils/transcribeWithWhisper');
+const path = require('path');
+const fs = require('fs');
+const { uploadOnCloudinary } = require('../config/cloudinary');
+const { convertWebmToWav } = require('../utils/convertAudio');
+
+const safeDelete = (filePath) => {
+  if (fs.existsSync(filePath)) {
+    try {
+      fs.unlinkSync(filePath);
+    } catch (err) {
+      console.warn('[Cleanup Warning] Could not delete:', filePath, err.message);
+    }
+  }
+};
+
 
 // Ensure Cloudinary is configured
 cloudinary.config({
@@ -12,56 +28,73 @@ cloudinary.config({
 exports.uploadRecording = async (req, res, next) => {
   try {
     const meeting = await Meeting.findOne({ code: req.params.meetingCode });
-    if (!meeting) {
-      return res.status(404).json({ success: false, error: 'Meeting not found' });
-    }
+    if (!meeting) return res.status(404).json({ success: false, error: 'Meeting not found' });
 
     if (meeting.host.toString() !== req.user._id.toString()) {
       return res.status(403).json({ success: false, error: 'Only the host can upload recordings.' });
     }
 
-    if (!req.file) {
-      return res.status(400).json({ success: false, error: 'No recording file provided.' });
-    }
-
-    // Capture metadata from the multipart form data
     const { title, duration } = req.body;
-    if (!title || !duration) {
-        return res.status(400).json({ success: false, error: 'Title and duration are required.' });
+    if (!req.file || !title || !duration) {
+      return res.status(400).json({ success: false, error: 'Missing fields or file.' });
     }
 
-    // Upload to Cloudinary
-    const uploadStream = cloudinary.uploader.upload_stream(
-      { 
-        resource_type: 'video',
-        // --- CHANGE: Added folder option ---
-        folder: 'cosmo-meet' 
-      },
-      async (error, result) => {
-        if (error) {
-          console.error('Cloudinary Upload Error:', error);
-          return res.status(500).json({ success: false, error: 'Failed to upload to Cloudinary.' });
-        }
+    // Ensure temp directory exists
+    const tempDir = path.join(__dirname, '../temp');
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir, { recursive: true });
+    }
 
-        // Create a new recording document with all the rich metadata
-        const newRecording = new Recording({
-          meeting: meeting._id,
-          recordedBy: req.user._id,
-          title: title,
-          duration: parseInt(duration, 10),
-          cloudinaryUrl: result.secure_url,
-          cloudinaryPublicId: result.public_id,
-          fileSize: result.bytes,
-        });
+    // Step 1: Save the .webm file
+    const tempWebmPath = path.join(tempDir, `${Date.now()}.webm`);
+    fs.writeFileSync(tempWebmPath, req.file.buffer);
 
-        await newRecording.save();
-        res.status(201).json({ success: true, data: newRecording });
-      }
-    );
+    if (!fs.existsSync(tempWebmPath)) {
+      throw new Error("Failed to save video file");
+    }
 
-    uploadStream.end(req.file.buffer);
+    // Step 2: Convert .webm to .wav
+    const tempWavPath = tempWebmPath.replace('.webm', '.wav');
+    await convertWebmToWav(tempWebmPath, tempWavPath);
+
+    // Step 3: Transcribe .wav using Whisper
+    const vttPath = await transcribeWithWhisper(tempWavPath); // output will be .vtt
+
+    // Step 4: Upload .webm to Cloudinary
+    const videoResult = await uploadOnCloudinary(tempWebmPath);
+    if (!videoResult) throw new Error("Video upload failed");
+
+    // Step 5: Upload .vtt to Cloudinary
+    const captionResult = await cloudinary.uploader.upload(vttPath, {
+      resource_type: 'raw',
+      folder: 'cosmo-meet/captions',
+      public_id: videoResult.public_id + '_captions'
+    });
+
+    // Step 6: Save metadata to MongoDB
+    const newRecording = new Recording({
+      meeting: meeting._id,
+      recordedBy: req.user._id,
+      title,
+      duration: parseInt(duration),
+      cloudinaryUrl: videoResult.secure_url,
+      cloudinaryPublicId: videoResult.public_id,
+      fileSize: videoResult.bytes,
+      captionUrl: captionResult.secure_url,
+    });
+
+    await newRecording.save();
+
+    // Step 7: Cleanup
+
+    safeDelete(tempWebmPath);
+    safeDelete(tempWavPath);
+    safeDelete(vttPath);
+
+    res.status(201).json({ success: true, data: newRecording });
 
   } catch (err) {
+    console.error("Upload failed:", err);
     next(err);
   }
 };
@@ -107,5 +140,4 @@ exports.deleteRecording = async (req, res, next) => {
     next(err);
   }
 };
-
 

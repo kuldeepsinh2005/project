@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef  } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import axios from 'axios';
@@ -6,11 +6,27 @@ import axios from 'axios';
 // import Footer from '../components/Footer.jsx';
 import Starfield from '../components/Starfield.jsx';
 
+
+
 const Icon = ({ id, className }) => <i className={`fas fa-${id} ${className}`}></i>;
 
 // --- Video Player Modal (No changes) ---
+
 const VideoPlayerModal = ({ recording, onClose }) => {
+  const videoRef = useRef(null);
+  const [captionsEnabled, setCaptionsEnabled] = useState(true);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      const track = videoRef.current.textTracks[0];
+      if (track) {
+        track.mode = captionsEnabled ? 'showing' : 'hidden';
+      }
+    }
+  }, [captionsEnabled, recording]);
+
   if (!recording) return null;
+
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
       <div className="bg-[#1a2138] w-full max-w-4xl rounded-2xl shadow-2xl border border-[#6366f1]/20 overflow-hidden">
@@ -20,8 +36,36 @@ const VideoPlayerModal = ({ recording, onClose }) => {
             <Icon id="times" />
           </button>
         </div>
-        <div className="p-4">
-          <video src={recording.cloudinaryUrl} controls autoPlay className="w-full h-auto max-h-[70vh] rounded-lg"></video>
+
+        <div className="p-4 flex flex-col gap-4">
+          <video
+            ref={videoRef}
+            controls
+            autoPlay
+            crossOrigin="anonymous"
+            className="w-full h-auto max-h-[70vh] rounded-lg"
+          >
+            <source src={recording.cloudinaryUrl} type="video/webm" />
+            {recording.captionUrl && (
+              <track
+                label="English"
+                kind="subtitles"
+                srcLang="en"
+                src={recording.captionUrl}
+                default
+              />
+            )}
+            Your browser does not support the video tag.
+          </video>
+
+          {recording.captionUrl && (
+            <button
+              onClick={() => setCaptionsEnabled(prev => !prev)}
+              className="self-end px-4 py-2 bg-[#6366f1]/20 hover:bg-[#6366f1]/40 text-white rounded-lg text-sm font-medium transition"
+            >
+              {captionsEnabled ? 'Hide Captions' : 'Show Captions'}
+            </button>
+          )}
         </div>
       </div>
     </div>

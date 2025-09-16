@@ -27,6 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
+console.log(" remove a tag and href from all Front-end and Footer");
 
 // --- 3. Database Connection ---
 const connectDB = async () => {

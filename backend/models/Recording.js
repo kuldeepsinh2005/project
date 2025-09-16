@@ -29,6 +29,10 @@
       fileSize: { // Size in bytes
         type: Number, 
         default: 0,
+      },
+      captionUrl: {
+        type: String,
+        default: null,
       }
     }, { timestamps: true });
     
