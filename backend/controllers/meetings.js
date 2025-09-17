@@ -169,29 +169,107 @@ exports.getMeetingDetails = async (req, res, next) => {
     }
 };
 
-exports.getUserMeetings = async (req, res, next) => {
+// --- This function is now split into two new functions below ---
+// exports.getUserMeetings = ...
+
+// --- NEW: Paginated function for HOSTED meetings ---
+exports.getUserHostedMeetings = async (req, res, next) => {
     try {
         const userId = req.user._id;
-        const meetings = await Meeting.find({
-                $or: [{
-                        host: userId
-                    },
-                    {
-                        'participants.user': userId
-                    }
-                ]
-            })
+        const page = parseInt(req.query.page, 10) || 1;
+        const limit = parseInt(req.query.limit, 10) || 3;
+        const skip = (page - 1) * limit;
+
+        const query = { host: userId };
+
+        const totalMeetings = await Meeting.countDocuments(query);
+        const totalPages = Math.ceil(totalMeetings / limit);
+
+        const meetings = await Meeting.find(query)
             .populate('host', 'username')
             .populate('participants.user', 'username')
-            .sort({
-                createdAt: -1
-            });
-        res.status(200).json({
-            success: true,
-            count: meetings.length,
-            data: meetings
-        });
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit);
+
+        res.status(200).json({ success: true, data: meetings, currentPage: page, totalPages });
     } catch (err) {
         next(err);
     }
 };
+
+// --- NEW: Paginated function for PARTICIPATED meetings ---
+exports.getUserParticipatedMeetings = async (req, res, next) => {
+    try {
+        const userId = req.user._id;
+        const page = parseInt(req.query.page, 10) || 1;
+        const limit = parseInt(req.query.limit, 10) || 3;
+        const skip = (page - 1) * limit;
+
+        // Find meetings where the user is a participant but NOT the host
+        const query = { 
+            'participants.user': userId,
+            host: { $ne: userId } 
+        };
+
+        const totalMeetings = await Meeting.countDocuments(query);
+        const totalPages = Math.ceil(totalMeetings / limit);
+
+        const meetings = await Meeting.find(query)
+            .populate('host', 'username')
+            .populate('participants.user', 'username')
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit);
+
+        res.status(200).json({ success: true, data: meetings, currentPage: page, totalPages });
+    } catch (err) {
+        next(err);
+    }
+};
+
+
+
+
+// exports.getUserMeetings = async (req, res, next) => {
+//   try {
+//     const userId = req.user._id;
+
+//     // Get pagination parameters from query, with defaults
+//     const page = parseInt(req.query.page, 10) || 1;
+//     const limit = parseInt(req.query.limit, 10) || 6; // We'll show 6 meetings per page
+//     const skip = (page - 1) * limit;
+
+//     const query = {
+//       $or: [
+//         { host: userId },
+//         { 'participants.user': userId }
+//       ]
+//     };
+
+//     // Get the total count of meetings to calculate total pages
+//     const totalMeetings = await Meeting.countDocuments(query);
+//     const totalPages = Math.ceil(totalMeetings / limit);
+
+//     // Fetch the paginated data from the database
+//     const meetings = await Meeting.find(query)
+//       .populate('host', 'username')
+//       .populate('participants.user', 'username')
+//       .sort({ createdAt: -1 }) // Show the most recent meetings first
+//       .skip(skip)
+//       .limit(limit);
+
+//     res.status(200).json({ 
+//         success: true, 
+//         count: meetings.length, 
+//         totalPages,
+//         currentPage: page,
+//         totalMeetings, // Send total count to frontend
+//         data: meetings 
+//     });
+
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+

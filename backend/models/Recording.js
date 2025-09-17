@@ -33,7 +33,11 @@
       captionUrl: {
         type: String,
         default: null,
-      }
+      },
+      captionPublicId: {
+        type: String,
+      },
+
     }, { timestamps: true });
     
     module.exports = mongoose.model('Recording', RecordingSchema);

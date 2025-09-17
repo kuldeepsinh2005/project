@@ -11,10 +11,11 @@ const {
   removeParticipant,
   endMeeting,
   getMeetingDetails,
-  getUserMeetings
+  getUserHostedMeetings,
+  getUserParticipatedMeetings
 } = require('../controllers/meetings.js');
 
-router.get('/my-meetings', verifyJWT, asyncHandler(getUserMeetings));
+// router.get('/my-meetings', verifyJWT, asyncHandler(getUserMeetings));
 
 // @route   POST /api/meetings
 // @desc    Create a new meeting (host only)
@@ -46,6 +47,9 @@ router.delete('/:id', verifyJWT, asyncHandler(endMeeting));
 // @access  Private
 router.get('/:id', verifyJWT, asyncHandler(getMeetingDetails));
 
+// --- NEW: Separate routes for paginated meeting history ---
+router.get('/my-meetings/hosted', verifyJWT, getUserHostedMeetings);
+router.get('/my-meetings/participated', verifyJWT, getUserParticipatedMeetings);
 
 
 module.exports = router;

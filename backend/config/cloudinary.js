@@ -14,6 +14,7 @@ const uploadOnCloudinary = async (localFilePath) => {
         const response = await cloudinary.uploader.upload(localFilePath, {
             resource_type: "video", // Specify resource type as video for video files
             media_metadata: true, // To get metadata like duration
+            folder: "cosmo-meet",
         });
         // File has been uploaded successfully
         fs.unlinkSync(localFilePath); // Remove the locally saved temporary file

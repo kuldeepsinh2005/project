@@ -81,6 +81,7 @@ exports.uploadRecording = async (req, res, next) => {
       cloudinaryPublicId: videoResult.public_id,
       fileSize: videoResult.bytes,
       captionUrl: captionResult.secure_url,
+      captionPublicId: captionResult.public_id, 
     });
 
     await newRecording.save();
@@ -101,16 +102,52 @@ exports.uploadRecording = async (req, res, next) => {
 
 exports.getUserRecordings = async (req, res, next) => {
   try {
-    // console.log(req.user._id);
-    const recordings = await Recording.find({ recordedBy: req.user._id })
-      .populate('meeting', 'title code') // Populate related meeting info
-      .sort({ createdAt: -1 }); // Show newest first
+    const userId = req.user._id;
 
-    res.status(200).json({ success: true, count: recordings.length, data: recordings });
+    // Get pagination parameters from the query string
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 6; // Set limit to 6 recordings per page
+    const skip = (page - 1) * limit;
+
+    const query = { recordedBy: userId };
+
+    // Get the total count of recordings for pagination UI
+    const totalRecordings = await Recording.countDocuments(query);
+    const totalPages = Math.ceil(totalRecordings / limit);
+
+    // Fetch the paginated recordings
+    const recordings = await Recording.find(query)
+      .populate('meeting', 'title code')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    res.status(200).json({
+      success: true,
+      count: recordings.length,
+      totalPages,
+      currentPage: page,
+      totalRecordings,
+      data: recordings,
+    });
   } catch (err) {
     next(err);
   }
 };
+
+
+// exports.getUserRecordings = async (req, res, next) => {
+//   try {
+//     // console.log(req.user._id);
+//     const recordings = await Recording.find({ recordedBy: req.user._id })
+//       .populate('meeting', 'title code') // Populate related meeting info
+//       .sort({ createdAt: -1 }); // Show newest first
+
+//     res.status(200).json({ success: true, count: recordings.length, data: recordings });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 // --- NEW FUNCTION ---
 // @desc    Delete a recording
@@ -119,25 +156,46 @@ exports.getUserRecordings = async (req, res, next) => {
 exports.deleteRecording = async (req, res, next) => {
   try {
     const recording = await Recording.findById(req.params.meetingCode);
-    // console.log(req.params.meetingCode," ",recording);
     if (!recording) {
+      console.log("[Delete] Recording not found in DB");
       return res.status(404).json({ success: false, error: 'Recording not found' });
     }
 
-    // Ensure the user deleting the recording is the one who created it
     if (recording.recordedBy.toString() !== req.user._id.toString()) {
+      console.log("[Delete] Unauthorized attempt by user:", req.user._id);
       return res.status(403).json({ success: false, error: 'You are not authorized to delete this recording.' });
     }
 
-    // Step 1: Delete the video file from Cloudinary
-    await cloudinary.uploader.destroy(recording.cloudinaryPublicId, { resource_type: 'video' });
+    // Step 1: Delete video from Cloudinary
+    console.log("[Delete] Attempting to delete video from Cloudinary:", recording.cloudinaryPublicId);
+    const videoDeleteResult = await cloudinary.uploader.destroy(recording.cloudinaryPublicId, {
+      resource_type: 'video'
+    });
+    console.log("[Delete] Video delete result:", videoDeleteResult);
 
-    // Step 2: Delete the recording metadata from the database
+    // Step 2: Delete caption from Cloudinary
+    const captionPublicId = `cosmo-meet/captions/${recording.cloudinaryPublicId}_captions`;
+    console.log("[Delete] Attempting to delete caption from Cloudinary:", captionPublicId);
+
+    const captionDeleteResult = await cloudinary.uploader.destroy(captionPublicId, {
+      resource_type: 'raw'
+    });
+    if (recording.captionPublicId) {
+      const captionDeleteResult = await cloudinary.uploader.destroy(recording.captionPublicId, {
+        resource_type: 'raw'
+      });
+      console.log("[Delete] Caption delete result:", captionDeleteResult);
+    }
+
+
+    // Step 3: Delete from MongoDB
     await recording.deleteOne();
+    console.log("[Delete] Recording deleted from DB:", recording._id);
 
     res.status(200).json({ success: true, data: {} });
+
   } catch (err) {
+    console.error("[Delete ERROR]", err);
     next(err);
   }
 };
-

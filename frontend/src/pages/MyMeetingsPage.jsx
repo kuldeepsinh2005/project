@@ -6,10 +6,15 @@ import Starfield from '../components/Starfield.jsx';
 
 const Icon = ({ id, className }) => <i className={`fas fa-${id} ${className}`}></i>;
 
-// --- Meeting Detail Modal (No changes) ---
+// --- (MeetingDetailModal and MeetingRow components remain the same) ---
 const MeetingDetailModal = ({ meeting, onClose, user }) => {
+
+
     if (!meeting) return null;
     const allParticipants = meeting.participants;
+
+    // console.log(allParticipants);
+
     return (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
             <div className="bg-[#1a2138] border border-[#6366f1]/20 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
@@ -65,102 +70,6 @@ const MeetingDetailModal = ({ meeting, onClose, user }) => {
     );
 };
 
-
-export default function MyMeetingsPage() {
-  const { user, isAuthenticated, loading: authLoading } = useAuth();
-  const navigate = useNavigate();
-  const [meetings, setMeetings] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [selectedMeeting, setSelectedMeeting] = useState(null);
-
-  useEffect(() => {
-    const fetchMeetings = async () => {
-      try {
-        const res = await axios.get(
-          'http://localhost:5000/api/meetings/my-meetings',
-          { withCredentials: true }
-        );
-        if (res.data.success) {
-          setMeetings(res.data.data);
-        }
-      } catch (err) {
-        setError('Failed to fetch meeting history.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (!authLoading && isAuthenticated) {
-      fetchMeetings();
-    }
-  }, [isAuthenticated, authLoading]);
-
-  if (authLoading) {
-    return <div className="bg-[#0a0e17] min-h-screen flex items-center justify-center text-white">Loading...</div>;
-  }
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  const hostedMeetings = meetings.filter(m => m.host._id === user._id);
-  const participatedMeetings = meetings.filter(m => m.host._id !== user._id);
-
-  return (
-    <div className="bg-[#0a0e17] text-[#e2e8f0] font-['Exo_2'] min-h-screen flex flex-col">
-      <Starfield />
-      {/* <Header /> */}
-      <main className="flex-grow p-4 sm:p-6 lg:p-8 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl font-['Orbitron'] font-bold text-white mb-8">My Meeting History</h1>
-          
-          {loading ? (
-            <p>Loading your meetings...</p>
-          ) : error ? (
-            <p className="text-red-400">{error}</p>
-          ) : meetings.length === 0 ? (
-            <div className="text-center bg-[#1a2138]/60 p-8 rounded-2xl">
-              <Icon id="history" className="text-4xl text-[#6366f1] mb-4" />
-              <h2 className="text-2xl font-bold">No Meetings Yet</h2>
-              <p className="text-[#e2e8f0]/70 mt-2">You haven't hosted or joined any meetings. <br/> Start by creating one from your dashboard!</p>
-              <button onClick={() => navigate('/dashboard')} className="mt-6 px-6 py-2 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] rounded-lg text-white font-semibold">Go to Dashboard</button>
-            </div>
-          ) : (
-            <div className="space-y-10">
-              {/* Hosted Meetings Section */}
-              <div>
-                <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#8b5cf6] pb-2">Hosted by You</h2>
-                {hostedMeetings.length > 0 ? (
-                    <div className="space-y-4">
-                        {hostedMeetings.map((meeting) => (
-                            <MeetingRow key={meeting._id} meeting={meeting} onSelect={setSelectedMeeting} />
-                        ))}
-                    </div>
-                ) : <p className="text-[#e2e8f0]/70">You have not hosted any meetings.</p>}
-              </div>
-
-              {/* Participated Meetings Section */}
-              <div>
-                <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#0ea5e9] pb-2">Participated In</h2>
-                {participatedMeetings.length > 0 ? (
-                    <div className="space-y-4">
-                        {participatedMeetings.map((meeting) => (
-                            <MeetingRow key={meeting._id} meeting={meeting} onSelect={setSelectedMeeting} />
-                        ))}
-                    </div>
-                ) : <p className="text-[#e2e8f0]/70">You have not participated in any meetings.</p>}
-              </div>
-            </div>
-          )}
-        </div>
-      </main>
-      {/* <Footer /> */}
-      <MeetingDetailModal meeting={selectedMeeting} onClose={() => setSelectedMeeting(null)} user={user} />
-    </div>
-  );
-}
-
-// --- Reusable Meeting Row Component (Updated with Rejoin Logic) ---
 const MeetingRow = ({ meeting, onSelect }) => {
     const navigate = useNavigate();
     const [isRejoining, setIsRejoining] = useState(false);
@@ -168,7 +77,6 @@ const MeetingRow = ({ meeting, onSelect }) => {
     const handleRejoin = async () => {
         setIsRejoining(true);
         try {
-            // The backend's join logic gracefully handles rejoining.
             await axios.post(`http://localhost:5000/api/meetings/${meeting.code}/join`, {}, { withCredentials: true });
             navigate(`/test/video/${meeting.code}`);
         } catch (err) {
@@ -201,4 +109,201 @@ const MeetingRow = ({ meeting, onSelect }) => {
     );
 };
 
+
+// --- UPDATED: More Elegant Pagination Component ---
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+    if (totalPages <= 1) return null;
+
+    const getPageNumbers = () => {
+        const pageNumbers = [];
+        const maxPagesToShow = 3; // The max number of page buttons to show (e.g., 1 ... 4 5 6 ... 10)
+        const halfPages = Math.floor(maxPagesToShow / 2);
+
+        if (totalPages <= maxPagesToShow) {
+            // If total pages is small, show all page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                pageNumbers.push(i);
+            }
+        } else {
+            // Always show the first page
+            pageNumbers.push(1);
+
+            // Determine the range of pages to show around the current page
+            let startPage = Math.max(2, currentPage - halfPages + 1);
+            let endPage = Math.min(totalPages - 1, currentPage + halfPages - 1);
+
+            if (currentPage <= halfPages) {
+                endPage = maxPagesToShow - 1;
+            }
+            if (currentPage > totalPages - halfPages) {
+                startPage = totalPages - maxPagesToShow + 2;
+            }
+
+            // Add leading ellipsis if needed
+            if (startPage > 2) {
+                pageNumbers.push('...');
+            }
+
+            // Add the calculated range of pages
+            for (let i = startPage; i <= endPage; i++) {
+                pageNumbers.push(i);
+            }
+
+            // Add trailing ellipsis if needed
+            if (endPage < totalPages - 1) {
+                pageNumbers.push('...');
+            }
+
+            // Always show the last page
+            pageNumbers.push(totalPages);
+        }
+        return pageNumbers;
+    };
+
+    const pageNumbers = getPageNumbers();
+
+    return (
+        <div className="flex justify-center items-center gap-2 mt-8">
+            <button 
+                onClick={() => onPageChange(currentPage - 1)} 
+                disabled={currentPage === 1}
+                className="px-3 py-2 rounded-lg bg-[#1a2138] hover:bg-[#6366f1]/20 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            >
+                <Icon id="chevron-left" />
+            </button>
+            {pageNumbers.map((number, index) => 
+                number === '...' ? (
+                    <span key={`ellipsis-${index}`} className="px-4 py-2 text-[#e2e8f0]/50">...</span>
+                ) : (
+                    <button
+                        key={number}
+                        onClick={() => onPageChange(number)}
+                        className={`px-4 py-2 rounded-lg transition ${currentPage === number ? 'bg-[#6366f1] text-white font-bold' : 'bg-[#1a2138] hover:bg-[#6366f1]/20'}`}
+                    >
+                        {number}
+                    </button>
+                )
+            )}
+            <button 
+                onClick={() => onPageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="px-3 py-2 rounded-lg bg-[#1a2138] hover:bg-[#6366f1]/20 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            >
+                <Icon id="chevron-right" />
+            </button>
+        </div>
+    );
+};
+
+
+export default function MyMeetingsPage() {
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
+  const [selectedMeeting, setSelectedMeeting] = useState(null);
+  const [error, setError] = useState('');
+
+  // --- State for hosted and participated meetings ---
+  const [hosted, setHosted] = useState({ meetings: [], page: 1, totalPages: 1, loading: true, totalMeetings: 0 });
+  const [participated, setParticipated] = useState({ meetings: [], page: 1, totalPages: 1, loading: true, totalMeetings: 0 });
+
+  // Fetch HOSTED meetings
+  useEffect(() => {
+    const fetchHosted = async () => {
+      if (!isAuthenticated) return;
+      setHosted(prev => ({ ...prev, loading: true }));
+      try {
+        const res = await axios.get(`http://localhost:5000/api/meetings/my-meetings/hosted?page=${hosted.page}&limit=3`, { withCredentials: true });
+        if (res.data.success) {
+          setHosted(prev => ({ ...prev, meetings: res.data.data, totalPages: res.data.totalPages, totalMeetings: res.data.totalMeetings }));
+        }
+      } catch (err) { setError('Failed to fetch hosted meetings.'); } 
+      finally { setHosted(prev => ({ ...prev, loading: false })); }
+    };
+    if (!authLoading) fetchHosted();
+  }, [isAuthenticated, authLoading, hosted.page]);
+
+  // Fetch PARTICIPATED meetings
+  useEffect(() => {
+    const fetchParticipated = async () => {
+      if (!isAuthenticated) return;
+      setParticipated(prev => ({ ...prev, loading: true }));
+      try {
+        const res = await axios.get(`http://localhost:5000/api/meetings/my-meetings/participated?page=${participated.page}&limit=3`, { withCredentials: true });
+        if (res.data.success) {
+          setParticipated(prev => ({ ...prev, meetings: res.data.data, totalPages: res.data.totalPages, totalMeetings: res.data.totalMeetings }));
+        }
+      } catch (err) { setError('Failed to fetch participated meetings.'); } 
+      finally { setParticipated(prev => ({ ...prev, loading: false })); }
+    };
+    if (!authLoading) fetchParticipated();
+  }, [isAuthenticated, authLoading, participated.page]);
+
+  if (authLoading) {
+    return <div className="bg-[#0a0e17] min-h-screen flex items-center justify-center text-white">Loading...</div>;
+  }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return (
+    <div className="bg-[#0a0e17] text-[#e2e8f0] font-['Exo_2'] min-h-screen flex flex-col">
+      <Starfield />
+      {/* <Header /> */}
+      <main className="flex-grow p-4 sm:p-6 lg:p-8 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-['Orbitron'] font-bold text-white mb-8">My Meeting History</h1>
+          
+          {error && <p className="text-red-400 text-center">{error}</p>}
+          
+          { (hosted.totalMeetings === 0 && participated.totalMeetings === 0 && !hosted.loading && !participated.loading) ? (
+            <div className="text-center bg-[#1a2138]/60 p-8 rounded-2xl">
+              <Icon id="history" className="text-4xl text-[#6366f1] mb-4" />
+              <h2 className="text-2xl font-bold">No Meetings Yet</h2>
+              <p className="text-[#e2e8f0]/70 mt-2">You haven't hosted or joined any meetings. <br/> Start by creating one from your dashboard!</p>
+              <button onClick={() => navigate('/dashboard')} className="mt-6 px-6 py-2 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] rounded-lg text-white font-semibold">Go to Dashboard</button>
+            </div>
+          ) : (
+            <div className="space-y-12">
+              {/* Hosted Meetings Section */}
+              <div>
+                <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#8b5cf6] pb-2">Hosted by You</h2>
+                {hosted.loading ? <p>Loading hosted meetings...</p> : 
+                 hosted.meetings.length > 0 ? (
+                  <>
+                    <div className="space-y-4">
+                      {hosted.meetings.map((meeting) => (
+                        <MeetingRow key={meeting._id} meeting={meeting} onSelect={setSelectedMeeting} />
+                      ))}
+                    </div>
+                    <Pagination currentPage={hosted.page} totalPages={hosted.totalPages} onPageChange={(page) => setHosted(p => ({ ...p, page }))} />
+                  </>
+                 ) : <p className="text-[#e2e8f0]/70">You have not hosted any meetings.</p>
+                }
+              </div>
+
+              {/* Participated Meetings Section */}
+              <div>
+                <h2 className="text-2xl font-bold mb-4 border-b-2 border-[#0ea5e9] pb-2">Participated In</h2>
+                {participated.loading ? <p>Loading participated meetings...</p> :
+                 participated.meetings.length > 0 ? (
+                  <>
+                    <div className="space-y-4">
+                      {participated.meetings.map((meeting) => (
+                        <MeetingRow key={meeting._id} meeting={meeting} onSelect={setSelectedMeeting} />
+                      ))}
+                    </div>
+                    <Pagination currentPage={participated.page} totalPages={participated.totalPages} onPageChange={(page) => setParticipated(p => ({ ...p, page }))} />
+                  </>
+                 ) : <p className="text-[#e2e8f0]/70">You have not participated in any meetings.</p>
+                }
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+      {/* <Footer /> */}
+      <MeetingDetailModal meeting={selectedMeeting} onClose={() => setSelectedMeeting(null)} user={user} />
+    </div>
+  );
+}
 
