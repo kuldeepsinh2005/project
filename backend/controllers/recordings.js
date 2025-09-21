@@ -136,19 +136,6 @@ exports.getUserRecordings = async (req, res, next) => {
 };
 
 
-// exports.getUserRecordings = async (req, res, next) => {
-//   try {
-//     // console.log(req.user._id);
-//     const recordings = await Recording.find({ recordedBy: req.user._id })
-//       .populate('meeting', 'title code') // Populate related meeting info
-//       .sort({ createdAt: -1 }); // Show newest first
-
-//     res.status(200).json({ success: true, count: recordings.length, data: recordings });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
 // --- NEW FUNCTION ---
 // @desc    Delete a recording
 // @route   DELETE /api/recordings/:meetingCode

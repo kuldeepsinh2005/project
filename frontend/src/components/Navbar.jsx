@@ -42,7 +42,8 @@ export default function Header() {
           <Link to="/test/createmeeting" className="hover:text-[#0ea5e9] transition">New Meeting</Link>
           <Link to="/my-meetings" className="hover:text-[#0ea5e9] transition">My Meetings</Link>
           <Link to="/my-recordings" className="hover:text-[#0ea5e9] transition">My Recordings</Link>
-          <a href="#" className="hover:text-[#0ea5e9] transition">Support</a> {/* external or # can stay */}
+          <Link to="/support" className="hover:text-[#0ea5e9] transition">Support</Link>
+          {/* <a href="/support" className="hover:text-[#0ea5e9] transition">Support</a> external or # can stay */}
         </div>
 
         {/* </div> */}

@@ -10,20 +10,20 @@ const FeatureCard = ({ icon, title, description, color }) => {
       border: 'hover:border-[#6366f1]/50',
       iconBg: 'bg-gradient-to-br from-[#6366f1]/20 to-[#6366f1]/10 group-hover:from-[#6366f1]/30 group-hover:to-[#6366f1]/20',
       iconColor: 'text-[#6366f1]',
-      linkColor: 'text-[#6366f1]'
+      linkColor: 'text-[#6366f1]',
     },
     quantum: {
       border: 'hover:border-[#8b5cf6]/50',
       iconBg: 'bg-gradient-to-br from-[#8b5cf6]/20 to-[#8b5cf6]/10 group-hover:from-[#8b5cf6]/30 group-hover:to-[#8b5cf6]/20',
       iconColor: 'text-[#8b5cf6]',
-      linkColor: 'text-[#8b5cf6]'
+      linkColor: 'text-[#8b5cf6]',
     },
     astral: {
       border: 'hover:border-[#0ea5e9]/50',
       iconBg: 'bg-gradient-to-br from-[#0ea5e9]/20 to-[#0ea5e9]/10 group-hover:from-[#0ea5e9]/30 group-hover:to-[#0ea5e9]/20',
       iconColor: 'text-[#0ea5e9]',
-      linkColor: 'text-[#0ea5e9]'
-    }
+      linkColor: 'text-[#0ea5e9]',
+    },
   };
 
   const selectedColor = colors[color] || colors.plasma;
@@ -45,33 +45,34 @@ const FeatureCard = ({ icon, title, description, color }) => {
 export default function Features() {
   return (
     <section className="relative py-16 px-4">
-       {/* This style tag ensures Font Awesome is loaded for the icons */}
-       <style>{`
+      {/* This style tag ensures Font Awesome is loaded for the icons */}
+      <style>{`
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
       `}</style>
+
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-['Orbitron'] font-bold mb-4 text-white">STELLAR FEATURES</h2>
-          <p className="text-[#e2e8f0]/80 text-xl">Advanced technology for seamless collaboration across galaxies</p>
+          <h2 className="text-3xl md:text-4xl font-['Orbitron'] font-bold mb-4 text-white">OUR ADVANCED FEATURES</h2>
+          <p className="text-[#e2e8f0]/80 text-xl">Empowering seamless communication and collaboration for modern businesses</p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <FeatureCard 
-            icon="shield-alt"
-            title="Quantum Encryption"
-            description="Military-grade security with end-to-end encryption for all your meetings."
+          <FeatureCard
+            icon="video"
+            title="Professional Video Conferencing"
+            description="HD video calls with smooth performance, even in large meetings, for crystal-clear communication."
             color="plasma"
           />
-          <FeatureCard 
-            icon="vr-cardboard"
-            title="Holographic Presence"
-            description="Next-gen spatial audio and video for immersive meeting experiences."
+          <FeatureCard
+            icon="history"
+            title="Meeting History"
+            description="Easily access past meetings, summaries, and key takeaways from your meeting history."
             color="quantum"
           />
-          <FeatureCard 
-            icon="robot"
-            title="AI-Powered Assistance"
-            description="Smart meeting notes, real-time translation, and automated summaries."
+          <FeatureCard
+            icon="record-vinyl"
+            title="Recording with Captions"
+            description="Record meetings with automatically generated captions, making it easier to review and share later."
             color="astral"
           />
         </div>

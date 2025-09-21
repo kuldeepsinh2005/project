@@ -14,6 +14,7 @@ import MyRecordingsPage from "./pages/MyRecordingsPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./App.css";
+import SupportPage from "./pages/SupportPage";
 
 function App() {
   console.log("🚀 App Rendered");
@@ -29,6 +30,7 @@ function App() {
         <Route path="/test" element={<TestPage />} />
         <Route path="/test/createmeeting" element={<CreateMeetingPage />} />
         <Route path="/test/video/:roomID" element={<VideoConference />} />
+        <Route path="/support" element={<SupportPage />} />
       </Routes>
       <Footer />
     </>
