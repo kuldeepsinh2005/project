@@ -96,12 +96,6 @@ exports.registerUser = async (req, res, next) => {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
-    // Optionally use Joi validation
-    // const { error } = validateRegisterInput.validate({ username, email, password });
-    // if (error) {
-    //   return res.status(400).json({ error: error.details[0].message });
-    // }
-
     // Check if user exists
     const existedUser = await User.findOne({
         $or: [{ username }, { email }]
